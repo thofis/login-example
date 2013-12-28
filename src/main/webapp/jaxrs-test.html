@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    
+    <head>
+        <title>Testseite JAX-RS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
+        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+        <script>
+            $(function() {
+                $("#addButton").click(function() {
+                    // client side computation
+//                    $('#ergebnis').val(parseInt($('#zahl1').val()) + parseInt($('#zahl2').val()))
+                    // Ajax-Call
+                    var queryParams = {
+                        zahl1: $("#zahl1").val(),
+                        zahl2: $("#zahl2").val()
+                    };     
+                    $.get("jaxrs/add?"+$.param(queryParams), function(data) {
+                        $("#ergebnis").val(data.ergebnis);
+                    });
+                });
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1>Jax-RS Addierer</h1>
+            </div>
+            <div class="row">
+                <form>
+                    <input type="text" id="zahl1">
+                    <input type="text" id="zahl2">
+                    =
+                    <input type="text" id="ergebnis" readonly="readonly" onfocus="this.blur();" style="background-color: lightgray">
+                    <input type="button" class="btn btn-default" id="addButton" value="Berechnen" >
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

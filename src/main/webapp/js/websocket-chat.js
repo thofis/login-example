@@ -53,9 +53,9 @@ function ChatController($scope) {
         if (chatEvent.type === "send") {
             newMessage = chatEvent.createdAt + " - " + chatEvent.user + ": " + chatEvent.msg;
         } else if (chatEvent.type === "enter") {
-            newMessage = chatEvent.createdAt + " - " + chatEvent.user + " enters the chat";
+            newMessage = chatEvent.createdAt + " - " + chatEvent.user + " betritt den Chat.";
         } else if (chatEvent.type === "leave") {
-            newMessage = chatEvent.createdAt + " - " + chatEvent.user + " leaves the chat";
+            newMessage = chatEvent.createdAt + " - " + chatEvent.user + " verlässt den Chat.";
         } else {
             newMessage = chatEvent.createdAt + " - " + "unknown chat event...";
         }

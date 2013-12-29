@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+  <head>
+    <title>Websocket Chat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
+    <link href="css/websocket-chat.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/websocket-chat.js"></script>
+  </head>
+
+  <body ng-app>
+    <div class="container" ng-controller="ChatController">
+      <div class="row">
+        <h1 class="text-center">Websocket Chat</h1>
+      </div>
+      <div class="row">
+        <ul ng-repeat="message in messages" ng-class-even="'evenRow'" ng-class-odd="'oddRow'">
+          <li>{{message}}</li> 
+        </ul>
+      </div>
+      <form class=" row well">
+        <div class="row">
+          Benutzer online: {{usersOnline}}
+        </div>
+        <div class="row">
+          <label>Benutzername:</label>
+          <input type="text" ng-model="username" ng-disabled="chatEnabled" class="col-md-12 col-sm-12">
+        </div>
+        <div class="row">
+          <label>Nachricht:</label>
+          <input type="text" ng-model="currentMessage" ng-disabled="!chatEnabled" class="col-md-12 col-sm-12">
+        </div>
+        <div class="row">
+          <input type="button" value="Senden" ng-click="send()" ng-disabled="!chatEnabled" class="col-md-4 col-sm-4 btn btn-default">
+          <input type="button" value="Beitreten" ng-click="enter()" ng-disabled="chatEnabled" class="col-md-4 col-sm-4 btn btn-default">
+          <input type="button" value="Verlassen" ng-click="leave()" ng-disabled="!chatEnabled" class="col-md-4 col-sm-4 btn btn-default">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

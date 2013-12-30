@@ -16,17 +16,17 @@ and open the template in the editor.
     <script type="text/javascript" src="js/websocket-chat.js"></script>
   </head>
 
-  <body ng-app>
+  <body ng-app="websockets-chat">
     <div class="container" ng-controller="ChatController">
       <div class="row">
         <h1 class="text-center">Websocket Chat</h1>
       </div>
       <div class="row">
-        <ul ng-repeat="message in messages" ng-class-even="'evenRow'" ng-class-odd="'oddRow'">
+        <ul ng-repeat="message in messages track by $index" ng-class-even="'evenRow'" ng-class-odd="'oddRow'">
           <li>{{message}}</li> 
         </ul>
       </div>
-      <form class=" row well">
+        <form class="row well">
         <div class="row">
           Benutzer online: {{usersOnline}}
         </div>
@@ -36,7 +36,7 @@ and open the template in the editor.
         </div>
         <div class="row">
           <label>Nachricht:</label>
-          <input type="text" ng-model="currentMessage" ng-disabled="!chatEnabled" class="col-md-12 col-sm-12">
+          <input type="text" ng-model="currentMessage" ng-disabled="!chatEnabled" custom-enter="send()" focus-me="focusMessage" class="col-md-12 col-sm-12">
         </div>
         <div class="row">
           <input type="button" value="Senden" ng-click="send()" ng-disabled="!chatEnabled" class="col-md-4 col-sm-4 btn btn-default">
